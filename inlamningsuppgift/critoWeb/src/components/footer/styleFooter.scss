@@ -1,0 +1,185 @@
+@use "../../variables" as *;
+@use "../../keyframes" as *;
+
+footer {
+   width: 100%;
+   background-color: $color-background-footer;
+
+   p {
+      color: $color-text-footer;
+   }
+
+   .footer-upper {
+      background-image: url("../img/background/background-lines-white-right.svg");
+      background-repeat: no-repeat;
+      background-position: bottom right;
+
+      padding-top: 11vh;
+      padding-bottom: $gap-large;
+
+      .container {
+         display: grid;
+         grid-template-columns: 1fr;
+         grid-template-rows: auto 1fr;
+
+         justify-items: center;
+
+         @media (min-width: $bs-s) {
+            justify-items: stretch;
+         }
+
+         @media (min-width: $bs-xl) {
+            grid-template-columns: 32% 1fr;
+            grid-template-rows: 1fr;
+         }
+
+         .company-info {
+            text-align: center;
+
+            padding-right: 0;
+
+            width: 90%;
+
+            @media (min-width: $bs-s) {
+               width: 100%;
+               text-align: left;
+            }
+
+            @media (min-width: $bs-xl) {
+               padding-right: 21%;
+            }
+
+            img {
+               margin-bottom: 30px;
+            }
+
+            p {
+               font-size: 1.1rem;
+            }
+         }
+
+         .content-box {
+            display: grid;
+
+            grid-template-columns: 1fr;
+
+            @media (min-width: $bs-s) {
+               grid-template-columns: 1fr auto;
+               grid-template-rows: 1fr 1fr;
+            }
+
+            @media (min-width: $bs-m) {
+               display: flex;
+               justify-content: space-between;
+            }
+
+            .content {
+               text-align: center;
+
+               @media (min-width: $bs-s) {
+                  text-align: left;
+               }
+
+               h4 {
+                  color: white;
+
+                  font-size: 1.2rem;
+
+                  margin-top: 15px;
+                  margin-bottom: 15px;
+
+                  @media (min-width: $bs-m) {
+                     font-size: 1.3rem;
+
+                     margin-top: 20px;
+                     margin-bottom: 40px;
+                  }
+
+                  @media (min-width: $bs-l) {
+                     font-size: 1.4rem;
+                  }
+               }
+
+               ul {
+                  list-style-type: none;
+
+                  padding-left: 0;
+
+                  li {
+                     text-wrap: nowrap;
+                     margin-bottom: 5px;
+
+                     @media (min-width: $bs-s) {
+                        margin-bottom: 15px;
+                     }
+
+                     a {
+                        color: $color-text-footer;
+                        font-weight: bold;
+
+                        transition-property: color, text-shadow;
+                        transition-duration: 0.3s;
+
+                        &:hover {
+                           color: $color-yellow;
+
+                           text-shadow: 0 0 10px white;
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   .footer-lower {
+      border-top: 1px solid $color-text-darkgrey;
+
+      padding: 1.5rem 0;
+
+      .container {
+
+         .copyright-social {
+            display: flex;
+
+            flex-direction: column-reverse;
+            align-items: center;
+
+            @media (min-width: $bs-m) {
+               flex-direction: row;
+               justify-content: space-between;
+               align-items: normal;
+            }
+
+            p {
+               margin: 0;
+            }
+
+            .social {
+               display: flex;
+               gap: 25px;
+
+               margin-bottom: 10px;
+
+               @media (min-width: $bs-m) {
+                  margin-bottom: 0;
+               }
+
+               a {
+                  color: white;
+
+                  transition-property: color, text-shadow;
+                  transition-duration: 0.4s;
+
+                  &:hover {
+                     color: $color-yellow;
+
+                     text-shadow: 0 0 10px white;
+                  }
+               }
+            }
+         }
+      }
+   }
+}
