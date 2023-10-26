@@ -1,0 +1,40 @@
+$color-nearly-black: #191919;
+$color-white: #ffffff;
+$color-yellow: #f9d783;
+$color-yellow-darker: #edcf87;
+$color-accent-red: #f94d1c;
+$color-accent-blue: #beebff;
+$color-background-grey: #f0efe9;
+$color-background-footer: #0e1021;
+$color-text-footer: #b6b6bc;
+$color-text-darkgrey: #5b5b5b;
+
+$gap-small: 5vh;
+$gap-medium: 7vh;
+$gap-large: 9vh;
+
+// Bootstraps width cutoffs
+$bs-s: 576px;
+$bs-m: 768px;
+$bs-l: 992px;
+$bs-xl: 1200px;
+$bs-xxl: 1400px;
+
+$button-height: 3.5rem;
+
+
+// WIP, won't work as is
+// $dark-theme: true; //Can't be used for live toggling, but maybe for exporting two versions of the css
+// @if $dark-theme {}
+// @media (prefers-color-scheme: dark) {
+//    $color-nearly-black: lighten($color-nearly-black, 80%);
+//    $color-white: darken($color-white, 85%);
+//    $color-yellow: darken($color-yellow, 30%);
+//    $color-yellow-darker: darken($color-yellow-darker, 40%);
+//    // $color-accent-red: lighten($color-accent-red, 05%);
+//    $color-accent-blue: darken($color-accent-blue, 60%);
+//    $color-background-grey: darken($color-background-grey, 50%);
+//    $color-background-footer: #0e1021;
+//    $color-text-footer: lighten($color-text-footer, 60%);
+//    $color-text-darkgrey: lighten($color-text-darkgrey, 60%);
+// }

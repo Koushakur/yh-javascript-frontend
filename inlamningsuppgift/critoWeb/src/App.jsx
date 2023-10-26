@@ -1,9 +1,10 @@
-import './App.css'
+import './styleShared.scss'
+import Header from '@components/header/header.jsx'
 
 function App() {
    return (
       <>
-
+         <Header />
       </>
    )
 }
