@@ -2,7 +2,14 @@ import React from 'react'
 import './styleHeader.scss'
 import ImgLogoCrito from '@images/logos/LogoCrito.svg'
 
-const header = () => {
+const header = ({ currNavID }) => {
+   function addNavCurrent(navID, compareID) {
+      if (navID === compareID)
+         return "current"
+      else
+         return ""
+   }
+
    return (
       <header>
          <div className="container">
@@ -40,10 +47,10 @@ const header = () => {
                <div className="navigation-account">
                   {/* Navigation */}
                   <nav>
-                     <a href="index.html" id="index">Home</a>
-                     <a href="service.html" id="service">Service</a>
-                     <a href="news.html" id="news">News</a>
-                     <a href="contact.html" id="contact">Contact</a>
+                     <a href="/" className={addNavCurrent("home", currNavID)}>Home</a>
+                     <a href="/service" className={addNavCurrent("service", currNavID)}>Service</a>
+                     <a href="/news" className={addNavCurrent("news", currNavID)}>News</a>
+                     <a href="/contact" className={addNavCurrent("contact", currNavID)}>Contact</a>
                   </nav>
 
                   {/* Login small */}
