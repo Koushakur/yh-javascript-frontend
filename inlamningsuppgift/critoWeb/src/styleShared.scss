@@ -22,12 +22,62 @@ body {
 main {
    width: 100%;
 
+   .newsletter {
+      background-color: $color-background-grey;
+
+      background-image: url("../../assets/img/background/background-wavy-lines.svg");
+      background-repeat: no-repeat;
+      background-position: right;
+      background-position-y: 70%;
+
+      .container {
+         display: flex;
+         justify-content: space-between;
+         flex-direction: column;
+         text-align: center;
+         flex-wrap: nowrap;
+
+         padding: $gap-large 0;
+
+         @media (min-width: $bs-xxl) {
+            flex-direction: row;
+         }
+
+         form {
+            margin-top: 25px;
+
+            @media (min-width: $bs-xxl) {
+               margin-top: 0;
+            }
+
+            input {
+               width: 250px;
+               margin: 0 15px;
+
+               padding: 1rem 2.5rem;
+
+               @media (min-width: $bs-m) {
+                  width: 300px;
+               }
+            }
+
+            button {
+               margin-top: 20px;
+
+               @media (min-width: $bs-xxl) {
+                  margin-top: 0;
+               }
+            }
+         }
+      }
+   }
+
    // Jumbotron showcase
    .showcase {
       background-color: $color-background-grey;
       padding-top: 2rem;
 
-      background-image: url("../img/background/background-lines.svg");
+      background-image: url("./assets/img/background/background-lines.svg");
       background-repeat: no-repeat;
 
       background-position: bottom left;
@@ -325,7 +375,7 @@ main {
    .services {
       background-color: $color-background-grey;
 
-      background-image: url("../img/background/background-lines-right.svg");
+      background-image: url("./assets/img/background/background-lines-right.svg");
       background-repeat: no-repeat;
       background-position: bottom right;
       animation: bg-size-bounce 10s infinite ease-in-out;

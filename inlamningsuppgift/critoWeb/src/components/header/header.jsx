@@ -1,11 +1,12 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import './styleHeader.scss'
 import ImgLogoCrito from '@images/logos/LogoCrito.svg'
 
 const header = ({ currNavID }) => {
    function addNavCurrent(navID, compareID) {
       if (navID === compareID)
-         return "current"
+         return "active"
       else
          return ""
    }
@@ -36,10 +37,10 @@ const header = ({ currNavID }) => {
 
                   {/* Social Links */}
                   <div className="social">
-                     <a href="facebook.html" target="_blank"><span className="fa-brands fa-facebook"></span></a>
-                     <a href="twitter.html" target="_blank"><span className="fa-brands fa-twitter"></span></a>
-                     <a href="instagram.html" target="_blank"><span className="fa-brands fa-instagram"></span></a>
-                     <a href="linkedin.html" target="_blank"><span className="fa-brands fa-linkedin"></span></a>
+                     <a href="https://www.facebook.com" target="_blank"><span className="fa-brands fa-facebook"></span></a>
+                     <a href="https://www.twitter.com" target="_blank"><span className="fa-brands fa-twitter"></span></a>
+                     <a href="https://www.instagram.com" target="_blank"><span className="fa-brands fa-instagram"></span></a>
+                     <a href="https://www.linkedin.com" target="_blank"><span className="fa-brands fa-linkedin"></span></a>
                   </div>
                </div>
 
@@ -47,10 +48,14 @@ const header = ({ currNavID }) => {
                <div className="navigation-account">
                   {/* Navigation */}
                   <nav>
-                     <a href="/" className={addNavCurrent("home", currNavID)}>Home</a>
+                     <NavLink to="/">Home</NavLink>
+                     <NavLink to="/service">Service</NavLink>
+                     <NavLink to="/news">News</NavLink>
+                     <NavLink to="/contact">Contact</NavLink>
+                     {/* <a href="/" className={addNavCurrent("home", currNavID)}>Home</a>
                      <a href="/service" className={addNavCurrent("service", currNavID)}>Service</a>
                      <a href="/news" className={addNavCurrent("news", currNavID)}>News</a>
-                     <a href="/contact" className={addNavCurrent("contact", currNavID)}>Contact</a>
+                     <a href="/contact" className={addNavCurrent("contact", currNavID)}>Contact</a> */}
                   </nav>
 
                   {/* Login small */}
