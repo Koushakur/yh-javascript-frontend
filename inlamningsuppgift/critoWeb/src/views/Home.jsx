@@ -12,6 +12,7 @@ import Studies from '@components/Studies/Studies'
 import OurTeam from '@components/OurTeam/OurTeam'
 import Testimonials from '@components/Testimonials/Testimonials'
 import NewsSection from '@components/News/NewsSection'
+import ToTopButton from '../components/ToTopButton'
 
 const home = () => {
    return (
@@ -29,6 +30,7 @@ const home = () => {
             <Testimonials />
             <NewsSection />
             <NewsletterSignup />
+            <ToTopButton />
          </main>
       </>
    )

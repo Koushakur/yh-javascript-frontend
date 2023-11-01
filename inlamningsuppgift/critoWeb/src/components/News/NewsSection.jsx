@@ -72,7 +72,7 @@ const NewsSection = () => {
                            Genre="Business"
                            Title="The Guide To Support Modern CSS Design"
                            Description="Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Architecto sed hic libero."
-                           DateMonth={13}
+                           DateMonth={3}
                            DateDay={13}
                         />
                      </div>
@@ -108,7 +108,7 @@ const NewsSection = () => {
                            Genre={"Business"}
                            Title={"The Guide To Support Modern CSS Design"}
                            Description={"Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Architecto sed hic libero."}
-                           DateMonth={13}
+                           DateMonth={3}
                            DateDay={13}
                         />
 
@@ -145,7 +145,7 @@ const NewsSection = () => {
                            Genre={"Business"}
                            Title={"The Guide To Support Modern CSS Design"}
                            Description={"Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Architecto sed hic libero."}
-                           DateMonth={13}
+                           DateMonth={3}
                            DateDay={13}
                         />
 
@@ -182,7 +182,7 @@ const NewsSection = () => {
                            Genre={"Business"}
                            Title={"The Guide To Support Modern CSS Design"}
                            Description={"Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Architecto sed hic libero."}
-                           DateMonth={13}
+                           DateMonth={3}
                            DateDay={13}
                         />
 
@@ -219,7 +219,7 @@ const NewsSection = () => {
                            Genre={"Business"}
                            Title={"The Guide To Support Modern CSS Design"}
                            Description={"Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Architecto sed hic libero."}
-                           DateMonth={13}
+                           DateMonth={3}
                            DateDay={13}
                         />
 

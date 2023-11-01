@@ -25,7 +25,7 @@ main {
    .newsletter {
       background-color: $color-background-grey;
 
-      background-image: url("../../assets/img/background/background-wavy-lines.svg");
+      background-image: url("./assets/img/background/background-wavy-lines.svg");
       background-repeat: no-repeat;
       background-position: right;
       background-position-y: 70%;
@@ -970,7 +970,6 @@ main {
 
 // Jump to top of page button
 #to-top {
-   display: none;
    position: fixed;
    right: 3vw;
    bottom: $gap-large;

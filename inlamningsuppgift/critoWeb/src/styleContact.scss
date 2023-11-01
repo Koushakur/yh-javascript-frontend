@@ -1,12 +1,12 @@
-@use "variables" as *;
-@use "anim" as *;
+@use "./variables" as *;
+@use "./keyframes" as *;
 
 main {
 
    .sub-header {
       background-color: $color-background-grey;
       text-align: center;
-      background-image: url("../img/background/background-lines.svg");
+      background-image: url("./assets/img/background/background-lines.svg");
       background-repeat: no-repeat;
       background-position: bottom left;
       animation:
@@ -67,6 +67,12 @@ main {
                   color: $color-text-darkgrey;
                }
             }
+
+            .email-box {
+               p {
+                  margin-bottom: 0;
+               }
+            }
          }
       }
 
@@ -119,13 +125,17 @@ main {
             width: 100%;
             margin-top: 30px;
          }
-
       }
    }
 
-   #gmp-map {
+   .gmp-map {
       margin-top: 120px;
-      height: 58vh;
-      width: 100%;
+
+      img {
+         object-fit: cover;
+         height: 58vh;
+         width: 100%;
+      }
    }
+
 }
