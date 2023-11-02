@@ -861,6 +861,10 @@ main {
       padding-top: $gap-large;
       padding-bottom: $gap-large;
 
+      h2 {
+         margin-bottom: $gap-small;
+      }
+
       .title-box {
          display: flex;
          text-align: center;
@@ -903,68 +907,67 @@ main {
                margin-bottom: -75px;
             }
          }
+      }
 
-         .carousel-inner {
+      .content-box {
+         display: grid;
 
-            .carousel-item {
+         grid-template-columns: 1fr;
+         grid-template-rows: repeat(3, 1fr);
 
-               .content-box {
-                  display: grid;
+         gap: 30px 15px;
 
-                  grid-template-columns: 1fr;
-                  grid-template-rows: repeat(3, 1fr);
+         @media (min-width: $bs-l) {
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto;
 
-                  gap: 15px;
+            gap: 60px 30px;
+         }
 
-                  @media (min-width: $bs-l) {
-                     grid-template-columns: repeat(3, 1fr);
-                     grid-template-rows: auto;
+         .content {
+            width: 100%;
+            position: relative;
 
-                     gap: 30px;
-                  }
+            display: grid;
 
-                  .content {
-                     width: 100%;
-                     position: relative;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 2.5rem 4rem 4rem;
 
-                     display: grid;
+            .date-box {
+               background-color: $color-yellow;
 
-                     grid-template-columns: 1fr;
-                     grid-template-rows: 1fr 2.5rem 4rem 4rem;
+               position: absolute;
+               top: 1.5vh;
+               left: 1.5vh;
 
-                     .date-box {
-                        background-color: $color-yellow;
+               line-height: 1.2rem;
+               text-align: center;
 
-                        position: absolute;
-                        top: 1.5vh;
-                        left: 1.5vh;
+               padding: 15px 15px 12px;
 
-                        line-height: 1.2rem;
-                        text-align: center;
+               strong {
+                  font-family: "Atkinson Hyperlegible", sans-serif;
+                  font-size: 1.3rem;
+               }
 
-                        padding: 15px 15px 12px;
-
-                        strong {
-                           font-family: "Atkinson Hyperlegible", sans-serif;
-                           font-size: 1.3rem;
-                        }
-
-                        p {
-                           margin-bottom: 0;
-                        }
-                     }
-
-                     img {
-                        object-fit: cover;
-                        width: 100%;
-                        height: 21vh;
-                        margin-bottom: 20px;
-                     }
-                  }
+               p {
+                  margin-bottom: 0;
                }
             }
+
+            img {
+               object-fit: cover;
+               width: 100%;
+               height: 21vh;
+               margin-bottom: 20px;
+            }
          }
+
       }
+   }
+
+   .newsListing {
+      margin-top: $gap-large;
    }
 }
 

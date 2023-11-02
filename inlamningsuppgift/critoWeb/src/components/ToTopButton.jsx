@@ -2,25 +2,28 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 
 const ToTopButton = () => {
-   const [isVisible, setIsVisible] = useState(false)
+   const [isVisible, setVisibility] = useState(false)
 
-   window.addEventListener("scroll", () => {
-      if (window.scrollY > 400) {
-         setIsVisible(true);
-      } else {
-         setIsVisible(false);
+   useEffect(() => {
+      const scrollEvent = () => {
+         if (window.scrollY > 400)
+            setVisibility(true);
+         else
+            setVisibility(false);
       }
-   });
-   // useEffect(() => {
-   // }, []);
+
+      window.addEventListener("scroll", scrollEvent);
+
+      return () => { window.removeEventListener("scroll", scrollEvent) }
+   }, []);
 
    function toTop() {
-      window.scrollTo(0, 0);
+      window.scrollTo({ top: 0 });
    }
 
    return (
       <>
-         {isVisible && <button onClick={toTop} className="btn-orange round" id="to-top"><span className="fa-solid fa-arrow-up"></span></button>}
+         {isVisible && <button onClick={toTop} className="btn-orange round" id="to-top"><span className="fa-solid fa-arrow-up"></span></button >}
       </>
    )
 }

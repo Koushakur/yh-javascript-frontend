@@ -3,13 +3,7 @@ import { NavLink } from 'react-router-dom'
 import './styleHeader.scss'
 import ImgLogoCrito from '@images/logos/LogoCrito.svg'
 
-const header = ({ currNavID }) => {
-   function addNavCurrent(navID, compareID) {
-      if (navID === compareID)
-         return "active"
-      else
-         return ""
-   }
+const header = () => {
 
    return (
       <header>

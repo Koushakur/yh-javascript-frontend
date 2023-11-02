@@ -1,5 +1,4 @@
 import React from 'react'
-import Header from '@components/header/Header'
 
 import NewsletterSignup from '@components/NewsletterSignup'
 import Showcase from '@components/Showcase'
@@ -12,26 +11,21 @@ import Studies from '@components/Studies/Studies'
 import OurTeam from '@components/OurTeam/OurTeam'
 import Testimonials from '@components/Testimonials/Testimonials'
 import NewsSection from '@components/News/NewsSection'
-import ToTopButton from '../components/ToTopButton'
 
 const home = () => {
    return (
       <>
-         <Header currNavID="home" />
-         <main>
-            <Showcase />
-            <Partners />
-            <Features />
-            <About />
-            <Services />
-            <WhyUs />
-            <Studies />
-            <OurTeam />
-            <Testimonials />
-            <NewsSection />
-            <NewsletterSignup />
-            <ToTopButton />
-         </main>
+         <Showcase />
+         <Partners />
+         <Features />
+         <About />
+         <Services />
+         <WhyUs />
+         <Studies />
+         <OurTeam />
+         <Testimonials />
+         <NewsSection />
+         <NewsletterSignup />
       </>
    )
 }

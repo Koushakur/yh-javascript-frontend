@@ -1,6 +1,6 @@
 import React from 'react'
 
-const NewsEntryPreview = ({ URL, Image, Genre, Title, Description, DateMonth, DateDay }) => {
+const NewsEntryPreview = ({ URL, Image, Category, Title, Description, DateMonth, DateDay }) => {
    function monthNumToName(mNum) {
       switch (mNum) {
          case 1: return "Jan"
@@ -29,7 +29,7 @@ const NewsEntryPreview = ({ URL, Image, Genre, Title, Description, DateMonth, Da
                   <p>{monthNumToName(DateMonth)}</p>
                </div>
                <img src={Image} alt="" />
-               <p>{Genre}</p>
+               <p>{Category}</p>
                <h4>{Title}</h4>
                <p>{Description}</p>
             </div>

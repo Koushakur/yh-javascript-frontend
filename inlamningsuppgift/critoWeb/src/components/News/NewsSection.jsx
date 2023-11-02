@@ -50,7 +50,7 @@ const NewsSection = () => {
                         <NewsEntryPreview
                            URL="/news"
                            Image={ImgNews1}
-                           Genre="Business"
+                           Category="Business"
                            Title="How To Use Digitalization In The Classroom"
                            Description="Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Architecto sed hic libero."
                            DateMonth={3}
@@ -59,7 +59,7 @@ const NewsSection = () => {
                         <NewsEntryPreview
                            URL="/news"
                            Image={ImgNews2}
-                           Genre="Business"
+                           Category="Business"
                            Title="How To Implement Chat GPT In Your Projects"
                            Description="Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Architecto sed hic libero."
                            DateMonth={3}
@@ -69,7 +69,7 @@ const NewsSection = () => {
                         <NewsEntryPreview
                            URL="/news"
                            Image={ImgNews3}
-                           Genre="Business"
+                           Category="Business"
                            Title="The Guide To Support Modern CSS Design"
                            Description="Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Architecto sed hic libero."
                            DateMonth={3}
@@ -86,7 +86,7 @@ const NewsSection = () => {
                         <NewsEntryPreview
                            URL="/news"
                            Image={ImgNews1}
-                           Genre={"Business"}
+                           Category={"Business"}
                            Title={"How To Use Digitalization In The Classroom"}
                            Description={"Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Architecto sed hic libero."}
                            DateMonth={3}
@@ -95,7 +95,7 @@ const NewsSection = () => {
                         <NewsEntryPreview
                            URL="/news"
                            Image={ImgNews2}
-                           Genre={"Business"}
+                           Category={"Business"}
                            Title={"How To Implement Chat GPT In Your Projects"}
                            Description={"Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Architecto sed hic libero."}
                            DateMonth={3}
@@ -105,7 +105,7 @@ const NewsSection = () => {
                         <NewsEntryPreview
                            URL="/news"
                            Image={ImgNews3}
-                           Genre={"Business"}
+                           Category={"Business"}
                            Title={"The Guide To Support Modern CSS Design"}
                            Description={"Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Architecto sed hic libero."}
                            DateMonth={3}
@@ -123,7 +123,7 @@ const NewsSection = () => {
                         <NewsEntryPreview
                            URL="/news"
                            Image={ImgNews1}
-                           Genre={"Business"}
+                           Category={"Business"}
                            Title={"How To Use Digitalization In The Classroom"}
                            Description={"Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Architecto sed hic libero."}
                            DateMonth={3}
@@ -132,7 +132,7 @@ const NewsSection = () => {
                         <NewsEntryPreview
                            URL="/news"
                            Image={ImgNews2}
-                           Genre={"Business"}
+                           Category={"Business"}
                            Title={"How To Implement Chat GPT In Your Projects"}
                            Description={"Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Architecto sed hic libero."}
                            DateMonth={3}
@@ -142,7 +142,7 @@ const NewsSection = () => {
                         <NewsEntryPreview
                            URL="/news"
                            Image={ImgNews3}
-                           Genre={"Business"}
+                           Category={"Business"}
                            Title={"The Guide To Support Modern CSS Design"}
                            Description={"Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Architecto sed hic libero."}
                            DateMonth={3}
@@ -160,7 +160,7 @@ const NewsSection = () => {
                         <NewsEntryPreview
                            URL="/news"
                            Image={ImgNews1}
-                           Genre={"Business"}
+                           Category={"Business"}
                            Title={"How To Use Digitalization In The Classroom"}
                            Description={"Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Architecto sed hic libero."}
                            DateMonth={3}
@@ -169,7 +169,7 @@ const NewsSection = () => {
                         <NewsEntryPreview
                            URL="/news"
                            Image={ImgNews2}
-                           Genre={"Business"}
+                           Category={"Business"}
                            Title={"How To Implement Chat GPT In Your Projects"}
                            Description={"Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Architecto sed hic libero."}
                            DateMonth={3}
@@ -179,7 +179,7 @@ const NewsSection = () => {
                         <NewsEntryPreview
                            URL="/news"
                            Image={ImgNews3}
-                           Genre={"Business"}
+                           Category={"Business"}
                            Title={"The Guide To Support Modern CSS Design"}
                            Description={"Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Architecto sed hic libero."}
                            DateMonth={3}
@@ -197,7 +197,7 @@ const NewsSection = () => {
                         <NewsEntryPreview
                            URL="/news"
                            Image={ImgNews1}
-                           Genre={"Business"}
+                           Category={"Business"}
                            Title={"How To Use Easter Eggs In The Classroom"}
                            Description={"Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Architecto sed hic libero."}
                            DateMonth={3}
@@ -206,7 +206,7 @@ const NewsSection = () => {
                         <NewsEntryPreview
                            URL="/news"
                            Image={ImgNews2}
-                           Genre={"Business"}
+                           Category={"Business"}
                            Title={"How To Implement Chat GPT In Your Projects"}
                            Description={"Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Architecto sed hic libero."}
                            DateMonth={3}
@@ -216,7 +216,7 @@ const NewsSection = () => {
                         <NewsEntryPreview
                            URL="/news"
                            Image={ImgNews3}
-                           Genre={"Business"}
+                           Category={"Business"}
                            Title={"The Guide To Support Modern CSS Design"}
                            Description={"Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Architecto sed hic libero."}
                            DateMonth={3}

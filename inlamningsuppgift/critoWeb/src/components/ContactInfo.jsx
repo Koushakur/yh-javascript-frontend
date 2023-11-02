@@ -13,8 +13,8 @@ const ContactInfo = () => {
                <img src={ImgVisitUs} alt="" />
                <div>
                   <h4>Visit us</h4>
-                  <p>Sveavägen 31<br />
-                     111 34 STOCKHOLM</p>
+                  <p>Sveavägen 31</p>
+                  <p>111 34 STOCKHOLM</p>
                </div>
             </div>
 
@@ -22,14 +22,14 @@ const ContactInfo = () => {
                <img src={ImgCallUs} alt="" />
                <div>
                   <h4>Call us</h4>
-                  <p>+46 (8) 121 470 50<br />
-                     +46 (8) 121 470 51</p>
+                  <p>+46 (8) 121 470 50</p>
+                  <p>+46 (8) 121 470 51</p>
                </div>
             </div>
 
             <div className="content">
                <img src={ImgEmailUs} alt="" />
-               <div className="email-box">
+               <div>
                   <h4>Email us</h4>
                   <a href="mailto:info@crito.com">
                      <p>info@crito.com</p>
