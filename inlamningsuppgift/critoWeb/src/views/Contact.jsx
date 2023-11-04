@@ -4,16 +4,14 @@ import '../styleContact.scss'
 
 import ContactInfo from '@components/ContactInfo'
 import ContactForm from '@components/ContactForm'
+import Subheader from '@components/Subheader'
 
 import ImgMap from '@images/CritoMap.png'
 
 const contact = () => {
    return (
       <>
-
-         <section className="sub-header">
-            <h1>Let's Connect</h1>
-         </section>
+         <Subheader Title="Let's Connect" />
 
          <ContactInfo />
          <ContactForm />

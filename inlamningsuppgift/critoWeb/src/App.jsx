@@ -5,6 +5,7 @@ import './styleShared.scss'
 // Views
 import Home from '@views/Home'
 import News from '@views/News'
+import ArticleView from '@views/ArticleView'
 import Contact from '@views/Contact'
 import Error404 from '@views/Error404'
 
@@ -16,7 +17,6 @@ import Header from '@components/Header/Header'
 function App() {
    return (
       <>
-
          <BrowserRouter>
             <Header />
             <main>
@@ -38,12 +38,14 @@ function App() {
                      return (<Route element={<News />} path={pathName} key={index} />)
                   })}
 
+                  <Route path="/article" element={<ArticleView />} />
+
                   <Route path="*" element={<Error404 />} />
                </Routes>
             </main>
+            <Footer />
          </BrowserRouter>
 
-         <Footer />
          <ToTopButton />
       </>
    )

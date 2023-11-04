@@ -1,12 +1,61 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import NewsEntryPreview from './NewsEntryPreview'
 
-import ImgNews1 from '@images/photos/linkedin-sales-solutions-01.jpg'
-import ImgNews2 from '@images/photos/emiliano-vittoriosi.jpg'
-import ImgNews3 from '@images/photos/kobu-agency.jpg'
+import { Link } from 'react-router-dom'
 
 const NewsSection = () => {
+   const [articles, setArticles] = useState([])
+
+   useEffect(() => {
+      fetchArticles(15)
+   }, [])
+
+   // useEffect(() => {
+   //    console.log(Math.ceil(articles.length / 3))
+   // }, [articles])
+
+   async function fetchArticles(numArticles) {
+      const fetchData = await fetch(`https://win23-assignment.azurewebsites.net/api/articles?take=${numArticles}`)
+      // console.log(await fetchData.json());
+      switch (fetchData.status) {
+         case 200:
+            setArticles(await fetchData.json())
+            break;
+         default:
+            alert("Failed to fetch articles")
+            break
+      }
+   }
+
+   function createSlides() {
+      let slides = [];
+
+      for (let i = 0; i < Math.ceil(articles.length / 3); i++) {
+         slides.push(
+            <div key={i} className={`carousel-item ${i === 0 ? 'active' : ''}`}>
+               <div className="content-box">
+                  {articles.slice(3 * i, 3 * (i + 1)).map((article) => {
+                     const tDate = new Date(article.published)
+                     return <NewsEntryPreview
+                        URL={`/article?id=${article.id}`}
+                        key={article.id}
+                        Image={article.imageUrl}
+                        Title={article.title}
+                        Description={article.content}
+                        Category={article.category}
+                        DateDay={tDate.getDate()}
+                        DateMonth={tDate.toLocaleString('default', { month: 'short' })}
+                     />
+                  })}
+               </div>
+            </div>
+         )
+      }
+
+      return slides
+   }
+
    return (
       <section className="news">
          <div className="container">
@@ -17,10 +66,10 @@ const NewsSection = () => {
                   <h3>Articles & News</h3>
                   <h2>Get Every Single Article & News</h2>
                </div>
-               <a href="#">
+               <Link to="/news">
                   <button className="btn-transparent">Browse Articles <span
                      className="fa-solid fa-arrow-up-right ms-2"></span></button>
-               </a>
+               </Link>
             </div>
 
             {/* Carousel structure start */}
@@ -28,210 +77,21 @@ const NewsSection = () => {
 
                {/* Indicators */}
                <div className="carousel-indicators">
-                  <button type="button" data-bs-target="#carouselNews" data-bs-slide-to="0" className="active"
-                     aria-label="Slide 1" aria-current="true"></button>
-                  <button type="button" data-bs-target="#carouselNews" data-bs-slide-to="1"
-                     aria-label="Slide 2"></button>
-                  <button type="button" data-bs-target="#carouselNews" data-bs-slide-to="2"
-                     aria-label="Slide 3"></button>
-                  <button type="button" data-bs-target="#carouselNews" data-bs-slide-to="3"
-                     aria-label="Slide 4"></button>
-                  <button type="button" data-bs-target="#carouselNews" data-bs-slide-to="4"
-                     aria-label="Slide 5"></button>
+                  {Array.from({ length: Math.ceil(articles.length / 3) }).map((_, i) => {
+                     return <button type="button" data-bs-target="#carouselNews" data-bs-slide-to={i} className={i === 0 ? 'active' : ''} aria-label={'Slide ' + i + 1} key={i} />
+                  })}
                </div>
 
                {/* Carousel items */}
                <div className="carousel-inner">
 
-                  {/* Slide 1 */}
-                  <div className="carousel-item active">
-                     <div className="content-box">
-
-                        <NewsEntryPreview
-                           URL="/news"
-                           Image={ImgNews1}
-                           Category="Business"
-                           Title="How To Use Digitalization In The Classroom"
-                           Description="Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Architecto sed hic libero."
-                           DateMonth={3}
-                           DateDay={25}
-                        />
-                        <NewsEntryPreview
-                           URL="/news"
-                           Image={ImgNews2}
-                           Category="Business"
-                           Title="How To Implement Chat GPT In Your Projects"
-                           Description="Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Architecto sed hic libero."
-                           DateMonth={3}
-                           DateDay={17}
-                        />
-
-                        <NewsEntryPreview
-                           URL="/news"
-                           Image={ImgNews3}
-                           Category="Business"
-                           Title="The Guide To Support Modern CSS Design"
-                           Description="Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Architecto sed hic libero."
-                           DateMonth={3}
-                           DateDay={13}
-                        />
-                     </div>
-                  </div>
-                  {/*  */}
-
-                  {/* Slide 2 */}
-                  <div className="carousel-item">
-                     <div className="content-box">
-
-                        <NewsEntryPreview
-                           URL="/news"
-                           Image={ImgNews1}
-                           Category={"Business"}
-                           Title={"How To Use Digitalization In The Classroom"}
-                           Description={"Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Architecto sed hic libero."}
-                           DateMonth={3}
-                           DateDay={25}
-                        />
-                        <NewsEntryPreview
-                           URL="/news"
-                           Image={ImgNews2}
-                           Category={"Business"}
-                           Title={"How To Implement Chat GPT In Your Projects"}
-                           Description={"Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Architecto sed hic libero."}
-                           DateMonth={3}
-                           DateDay={17}
-                        />
-
-                        <NewsEntryPreview
-                           URL="/news"
-                           Image={ImgNews3}
-                           Category={"Business"}
-                           Title={"The Guide To Support Modern CSS Design"}
-                           Description={"Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Architecto sed hic libero."}
-                           DateMonth={3}
-                           DateDay={13}
-                        />
-
-                     </div>
-                  </div>
-                  {/*  */}
-
-                  {/* Slide 3 */}
-                  <div className="carousel-item">
-                     <div className="content-box">
-
-                        <NewsEntryPreview
-                           URL="/news"
-                           Image={ImgNews1}
-                           Category={"Business"}
-                           Title={"How To Use Digitalization In The Classroom"}
-                           Description={"Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Architecto sed hic libero."}
-                           DateMonth={3}
-                           DateDay={25}
-                        />
-                        <NewsEntryPreview
-                           URL="/news"
-                           Image={ImgNews2}
-                           Category={"Business"}
-                           Title={"How To Implement Chat GPT In Your Projects"}
-                           Description={"Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Architecto sed hic libero."}
-                           DateMonth={3}
-                           DateDay={17}
-                        />
-
-                        <NewsEntryPreview
-                           URL="/news"
-                           Image={ImgNews3}
-                           Category={"Business"}
-                           Title={"The Guide To Support Modern CSS Design"}
-                           Description={"Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Architecto sed hic libero."}
-                           DateMonth={3}
-                           DateDay={13}
-                        />
-
-                     </div>
-                  </div>
-                  {/*  */}
-
-                  {/* Slide 4 */}
-                  <div className="carousel-item">
-                     <div className="content-box">
-
-                        <NewsEntryPreview
-                           URL="/news"
-                           Image={ImgNews1}
-                           Category={"Business"}
-                           Title={"How To Use Digitalization In The Classroom"}
-                           Description={"Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Architecto sed hic libero."}
-                           DateMonth={3}
-                           DateDay={25}
-                        />
-                        <NewsEntryPreview
-                           URL="/news"
-                           Image={ImgNews2}
-                           Category={"Business"}
-                           Title={"How To Implement Chat GPT In Your Projects"}
-                           Description={"Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Architecto sed hic libero."}
-                           DateMonth={3}
-                           DateDay={17}
-                        />
-
-                        <NewsEntryPreview
-                           URL="/news"
-                           Image={ImgNews3}
-                           Category={"Business"}
-                           Title={"The Guide To Support Modern CSS Design"}
-                           Description={"Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Architecto sed hic libero."}
-                           DateMonth={3}
-                           DateDay={13}
-                        />
-
-                     </div>
-                  </div>
-                  {/*  */}
-
-                  {/* Slide 5 */}
-                  <div className="carousel-item">
-                     <div className="content-box">
-
-                        <NewsEntryPreview
-                           URL="/news"
-                           Image={ImgNews1}
-                           Category={"Business"}
-                           Title={"How To Use Easter Eggs In The Classroom"}
-                           Description={"Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Architecto sed hic libero."}
-                           DateMonth={3}
-                           DateDay={25}
-                        />
-                        <NewsEntryPreview
-                           URL="/news"
-                           Image={ImgNews2}
-                           Category={"Business"}
-                           Title={"How To Implement Chat GPT In Your Projects"}
-                           Description={"Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Architecto sed hic libero."}
-                           DateMonth={3}
-                           DateDay={17}
-                        />
-
-                        <NewsEntryPreview
-                           URL="/news"
-                           Image={ImgNews3}
-                           Category={"Business"}
-                           Title={"The Guide To Support Modern CSS Design"}
-                           Description={"Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Architecto sed hic libero."}
-                           DateMonth={3}
-                           DateDay={13}
-                        />
-
-                     </div>
-                  </div>
-                  {/*  */}
+                  {createSlides()}
 
                </div>
             </div>
 
          </div>
-      </section>
+      </section >
    )
 }
 
