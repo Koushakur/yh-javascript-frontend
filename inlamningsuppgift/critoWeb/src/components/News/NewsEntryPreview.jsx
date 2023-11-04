@@ -1,9 +1,11 @@
 import React from 'react'
 
+import { Link } from 'react-router-dom'
+
 const NewsEntryPreview = ({ URL, Image, Category, Title, Description, DateMonth, DateDay }) => {
    return (
       <>
-         <a href={URL}>
+         <Link to={URL} onClick={() => { window.scrollTo({ top: 0, behavior: "instant" }) }}>
             <div className="content">
                <div className="date-box">
                   <strong>{DateDay}</strong><br />
@@ -14,7 +16,7 @@ const NewsEntryPreview = ({ URL, Image, Category, Title, Description, DateMonth,
                <h4>{Title}</h4>
                <p>{Description}</p>
             </div>
-         </a>
+         </Link>
       </>
    )
 }

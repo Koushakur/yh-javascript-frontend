@@ -38,7 +38,7 @@ const NewsSection = () => {
                   {articles.slice(3 * i, 3 * (i + 1)).map((article) => {
                      const tDate = new Date(article.published)
                      return <NewsEntryPreview
-                        URL={`/article?id=${article.id}`}
+                        URL={`/article/${article.id}`}
                         key={article.id}
                         Image={article.imageUrl}
                         Title={article.title}

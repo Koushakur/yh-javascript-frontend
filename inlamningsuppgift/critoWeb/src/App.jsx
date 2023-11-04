@@ -38,7 +38,7 @@ function App() {
                      return (<Route element={<News />} path={pathName} key={index} />)
                   })}
 
-                  <Route path="/article" element={<ArticleView />} />
+                  <Route path="/article/:id" element={<ArticleView />} />
 
                   <Route path="*" element={<Error404 />} />
                </Routes>
