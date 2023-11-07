@@ -3,38 +3,28 @@ import React, { useEffect, useState } from 'react'
 import Subheader from '@components/Subheader'
 import NewsSection from '@components/News/NewsSection'
 import QuoteEyecatch from '@components/QuoteEyecatch'
-import { useParams } from 'react-router-dom'
+import { Link, useLocation, useParams } from 'react-router-dom'
 
 const ArticleView = () => {
+   const location = useLocation()
    const [article, setArticle] = useState({})
    const { id } = useParams()
 
-   // useEffect(() => {
-   //    fetchArticle()
-   // }, [])
-
    useEffect(() => {
       fetchArticle()
-   }, [article])
+   }, [location])
 
    async function fetchArticle() {
+      if (id == undefined) return /* Specifically == so that null and '' etc also are caught */
+
       const tArticle = await fetch(`https://win23-assignment.azurewebsites.net/api/articles/${id}`)
 
-      switch (tArticle.status) {
-         case 200:
-            setArticle(await tArticle.json())
-            break;
-
-         default:
-            alert(`Failed to fetch article, status code ${tArticle.status}`)
-            break;
-      }
+      if (tArticle.status === 200) { setArticle(await tArticle.json()) }
+      else { alert(`Failed to fetch article, status code ${tArticle.status}`) }
    }
 
-   function returnDateString() {
-      const tDate = new Date(article.published)
-
-      return tDate.toLocaleString('default', { month: 'short', day: 'numeric', year: 'numeric' });
+   function dateString() {
+      return new Date(article.published).toLocaleString('default', { month: 'short', day: 'numeric', year: 'numeric' });
    }
 
    return (
@@ -46,10 +36,10 @@ const ArticleView = () => {
                <div className='article-header'>
                   <h4>{article.title}</h4>
                   <div className='article-info'>
-                     <p>{returnDateString()}</p>
-                     <span className='fa-solid fa-circle'></span>
+                     <p>{dateString()}</p>
+                     <span />
                      <p>{article.category}</p>
-                     <span className='fa-solid fa-circle'></span>
+                     <span />
                      <p>{article.author}</p>
                   </div>
                </div>
@@ -58,22 +48,80 @@ const ArticleView = () => {
                <div className='content-box'>
                   <div className='article-content'>
                      <img src={`${article.imageUrl}`} />
-                     {/* <p>{article.content}</p> */}
                      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.</p>
                      <p>Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci. Aenean nec lorem. In porttitor. Donec laoreet nonummy augue. uspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.</p>
                      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna. unc viverra imperdiet enim. Fusce est. Vivamus a tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.</p>
                      <p>Aenean nec lorem. In porttitor. Donec laoreet nonummy augue. Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.</p>
-                     <QuoteEyecatch Quote={article.content} />
-                     {/* <QuoteEyecatch Quote="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna" /> */}
+                     <QuoteEyecatch Text={article.content} />
                      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna. unc viverra imperdiet enim. Fusce est. Vivamus a tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci. Aenean nec lorem. In porttitor. Donec laoreet nonummy augue. Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.</p>
+                     <div className='tags'>
+                        {['Utbildning', 'IT', 'Företag', 'Digitalization', 'Design', 'Tech'].map((tag, i) => {
+                           return <Link to={`/news/${tag}`}><span className='tag' key={i}>{tag}</span></Link>
+                        })}
+                     </div>
                   </div>
 
                   <div className='article-navigation'>
-                     <input placeholder='Type to search..' />
-                     <div className='recent-posts box'>
-                        <div>asd</div>
+
+                     {/* Search */}
+                     <div className='searchBox'>
+                        <span className='fa-solid fa-magnifying-glass fa-flip-horizontal' />
+                        <input placeholder='Type to search..' name='SearchBox' />
                      </div>
-                     <div className='categories box'>By category</div>
+
+                     {/* Recent */}
+                     <div className='recent-posts border-box'>
+                        <h5>Recent Posts</h5>
+                        <div className='content'>
+                           <h6>How To Blow Through Capital At An Incredible Rate</h6>
+                           <p>Jan 14, 2020</p>
+                        </div>
+                        <span />
+                        <div className='content'>
+                           <h6>Design Studios That Everyone Should Know About?</h6>
+                           <p>Jan 14, 2020</p>
+                        </div>
+                        <span />
+                        <div className='content'>
+                           <h6>How did we get 1M+ visitors in 30 days without anything!</h6>
+                           <p>Jan 14, 2020</p>
+                        </div>
+                        <span />
+                        <div className='content'>
+                           <h6>Figma On Figma: How We Built Our Website Design System</h6>
+                           <p>Jan 14, 2020</p>
+                        </div>
+                     </div>
+
+                     {/* Categories */}
+                     <div className='categories border-box'>
+                        <h5>Categories</h5>
+                        <div className='content'>
+                           <h6>Technology -</h6>
+                           <p>20 posts</p>
+                        </div>
+                        <div className='content'>
+                           <h6>Freelancing -</h6>
+                           <p>7 posts</p>
+                        </div>
+                        <div className='content'>
+                           <h6>Writing -</h6>
+                           <p>16 posts</p>
+                        </div>
+                        <div className='content'>
+                           <h6>Marketing -</h6>
+                           <p>11 posts</p>
+                        </div>
+                        <div className='content'>
+                           <h6>Business -</h6>
+                           <p>35 posts</p>
+                        </div>
+                        <div className='content'>
+                           <h6>Education -</h6>
+                           <p>14 posts</p>
+                        </div>
+                     </div>
+
                   </div>
                </div>
             </div>

@@ -865,6 +865,18 @@ main {
          margin-bottom: $gap-small;
       }
 
+      .newsCategory {
+         display: flex;
+         align-items: center;
+         gap: 30px;
+         margin-top: -30px;
+         margin-bottom: 30px;
+
+         h4 {
+            margin: 0;
+         }
+      }
+
       .title-box {
          display: flex;
          text-align: center;
@@ -931,7 +943,7 @@ main {
             display: grid;
 
             grid-template-columns: 1fr;
-            grid-template-rows: 1fr 2.5rem 4rem 4rem;
+            grid-template-rows: 1fr 2.5rem 4rem 4.5rem;
 
             .date-box {
                background-color: $color-yellow;
@@ -964,6 +976,19 @@ main {
          }
 
       }
+
+      nav {
+         margin-top: $gap-small;
+
+         .pagination {
+            justify-content: center;
+
+            a {
+               color: $color-nearly-black;
+               font-family: "Atkinson Hyperlegible", sans-serif;
+            }
+         }
+      }
    }
 
    .newsListing {
@@ -993,9 +1018,11 @@ main {
             }
 
             span {
-               color: $color-yellow;
-               font-size: 0.6rem;
-               margin: 0 25px;
+               background-color: $color-yellow;
+               margin: 0 20px;
+               width: 10px;
+               height: 10px;
+               border-radius: 50%;
             }
          }
 
@@ -1004,6 +1031,7 @@ main {
       .content-box {
          display: grid;
          grid-template-columns: 1fr auto;
+         gap: 50px;
 
          .article-content {
 
@@ -1016,24 +1044,85 @@ main {
 
             img {
                object-fit: cover;
-               width: 90%;
+               width: 95%;
                height: 50vh;
                margin-bottom: 50px;
                border-radius: 5px;
             }
+
+            .tags {
+               display: flex;
+               gap: 15px;
+               font-size: 0.9rem;
+
+               .tag {
+                  background-color: $color-background-grey;
+                  text-align: center;
+                  font-weight: bold;
+
+                  display: block;
+                  min-width: 80px;
+                  padding: 10px 15px;
+                  border-radius: 50px;
+
+                  transition: background-color 0.3s;
+
+                  &:hover {
+                     background-color: $color-yellow;
+                  }
+               }
+            }
          }
 
          .article-navigation {
-            width: 350px;
+            width: 20vw;
+
+            .searchBox {
+               position: relative;
+               display: flex;
+               align-items: center;
+
+               span {
+                  position: absolute;
+                  margin-left: 20px;
+                  font-size: 1.25rem;
+               }
+
+               input {
+                  padding-left: 50px;
+               }
+            }
+
+            h5 {
+               position: relative;
+               font-weight: bold;
+               font-size: 1.25rem;
+
+               margin-bottom: 30px;
+
+               &::after {
+                  content: "";
+                  position: absolute;
+                  left: 0;
+                  bottom: -3px;
+                  width: 40px;
+                  height: 2px;
+                  border-radius: 2px;
+                  background-color: black;
+                  font-weight: normal;
+                  font-size: 1.25rem;
+               }
+            }
+
 
             input {
                background-color: $color-background-grey;
                width: 100%;
             }
 
-            .box {
+            .border-box {
                width: 100%;
-               padding: 30px;
+               padding: 35px;
 
                border-radius: 5px;
 
@@ -1042,11 +1131,31 @@ main {
             }
 
             .recent-posts {
-               margin: 50px 0;
+               margin: 40px 0;
+
+               span {
+                  display: block;
+                  width: 100%;
+                  height: 2px;
+                  background-color: $color-background-grey;
+                  margin: 20px 0;
+               }
+
+               // .content {
+               //    // border-bottom: 2px solid $color-background-grey;
+               //    // margin-bottom: 20px;
+               // }
             }
 
             .categories {
-               //
+               .content {
+                  display: flex;
+                  margin-bottom: -5px;
+
+                  h6 {
+                     margin-right: 0.4rem;
+                  }
+               }
             }
          }
       }
@@ -1142,6 +1251,11 @@ h4 {
    @media (min-width: $bs-l) {
       font-size: 1.4rem;
    }
+}
+
+h6 {
+   font-weight: bold;
+   line-height: 1.5rem;
 }
 
 p {

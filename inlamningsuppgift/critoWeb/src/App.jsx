@@ -34,7 +34,7 @@ function App() {
                   })}
 
                   {/* News synonyms */}
-                  {['/news', '/updates'].map((pathName, index) => {
+                  {['/news', '/news/:category', '/updates'].map((pathName, index) => {
                      return (<Route element={<News />} path={pathName} key={index} />)
                   })}
 

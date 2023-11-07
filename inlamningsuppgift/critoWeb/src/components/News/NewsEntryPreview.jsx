@@ -3,20 +3,26 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const NewsEntryPreview = ({ URL, Image, Category, Title, Description, DateMonth, DateDay }) => {
+   function onClickFunc() {
+      window.scrollTo({ top: 401, behavior: "instant" })
+   }
+
    return (
       <>
-         <Link to={URL} onClick={() => { window.scrollTo({ top: 0, behavior: "instant" }) }}>
-            <div className="content">
+         <div className="content">
+            <Link to={URL} onClick={onClickFunc}>
                <div className="date-box">
                   <strong>{DateDay}</strong><br />
                   <p>{DateMonth}</p>
                </div>
                <img src={Image} alt="" />
-               <p>{Category}</p>
+            </Link>
+            <Link to={`/news/${Category}`}><p>{Category}</p></Link>
+            <Link to={URL} onClick={onClickFunc}>
                <h4>{Title}</h4>
                <p>{Description}</p>
-            </div>
-         </Link>
+            </Link >
+         </div>
       </>
    )
 }

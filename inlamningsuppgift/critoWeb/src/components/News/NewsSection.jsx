@@ -11,21 +11,11 @@ const NewsSection = () => {
       fetchArticles(15)
    }, [])
 
-   // useEffect(() => {
-   //    console.log(Math.ceil(articles.length / 3))
-   // }, [articles])
-
    async function fetchArticles(numArticles) {
       const fetchData = await fetch(`https://win23-assignment.azurewebsites.net/api/articles?take=${numArticles}`)
-      // console.log(await fetchData.json());
-      switch (fetchData.status) {
-         case 200:
-            setArticles(await fetchData.json())
-            break;
-         default:
-            alert("Failed to fetch articles")
-            break
-      }
+
+      if (fetchData.status === 200) { setArticles(await fetchData.json()) }
+      else { alert(`Failed to fetch articles, status code ${fetchData.status}`) }
    }
 
    function createSlides() {
@@ -78,7 +68,7 @@ const NewsSection = () => {
                {/* Indicators */}
                <div className="carousel-indicators">
                   {Array.from({ length: Math.ceil(articles.length / 3) }).map((_, i) => {
-                     return <button type="button" data-bs-target="#carouselNews" data-bs-slide-to={i} className={i === 0 ? 'active' : ''} aria-label={'Slide ' + i + 1} key={i} />
+                     return <button type="button" data-bs-target="#carouselNews" data-bs-slide-to={i} className={i === 0 ? 'active' : ''} aria-label={'Slide ' + (i + 1)} key={i} />
                   })}
                </div>
 
