@@ -12,7 +12,7 @@ const ToTopButton = () => {
             setVisibility(false);
       }
 
-      window.addEventListener("scroll", scrollEvent);
+      window.addEventListener("scroll", scrollEvent, { passive: true });
 
       return () => { window.removeEventListener("scroll", scrollEvent) }
    }, []);

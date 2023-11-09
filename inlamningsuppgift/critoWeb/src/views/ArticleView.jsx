@@ -3,25 +3,18 @@ import React, { useEffect, useState } from 'react'
 import Subheader from '@components/Subheader'
 import NewsSection from '@components/News/NewsSection'
 import QuoteEyecatch from '@components/QuoteEyecatch'
-import { Link, useLocation, useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
+
+import { useArticles } from '@contexts/ArticleContext'
 
 const ArticleView = () => {
-   const location = useLocation()
-   const [article, setArticle] = useState({})
    const { id } = useParams()
 
+   const { article, fetchArticle } = useArticles()
+
    useEffect(() => {
-      fetchArticle()
-   }, [location])
-
-   async function fetchArticle() {
-      if (id == undefined) return /* Specifically == so that null and '' etc also are caught */
-
-      const tArticle = await fetch(`https://win23-assignment.azurewebsites.net/api/articles/${id}`)
-
-      if (tArticle.status === 200) { setArticle(await tArticle.json()) }
-      else { alert(`Failed to fetch article, status code ${tArticle.status}`) }
-   }
+      fetchArticle(id)
+   }, [id])
 
    function dateString() {
       return new Date(article.published).toLocaleString('default', { month: 'short', day: 'numeric', year: 'numeric' });
@@ -33,32 +26,43 @@ const ArticleView = () => {
          <section className='article'>
             <div className='container'>
                {/*  */}
-               <div className='article-header'>
-                  <h4>{article.title}</h4>
-                  <div className='article-info'>
-                     <p>{dateString()}</p>
-                     <span />
-                     <p>{article.category}</p>
-                     <span />
-                     <p>{article.author}</p>
+               {article ?
+                  <div className='article-header'>
+                     <h4>{article.title}</h4>
+                     <div className='article-info'>
+                        <p>{dateString()}</p>
+                        <span />
+                        <p>{article.category}</p>
+                        <span />
+                        <p>{article.author}</p>
+                     </div>
                   </div>
-               </div>
+                  :
+                  <div className='article-header'>
+                     <h4>Loading article...</h4>
+                     <div className='article-info' />
+                  </div>
+               }
 
                {/*  */}
                <div className='content-box'>
                   <div className='article-content'>
-                     <img src={`${article.imageUrl}`} />
-                     <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.</p>
-                     <p>Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci. Aenean nec lorem. In porttitor. Donec laoreet nonummy augue. uspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.</p>
-                     <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna. unc viverra imperdiet enim. Fusce est. Vivamus a tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.</p>
-                     <p>Aenean nec lorem. In porttitor. Donec laoreet nonummy augue. Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.</p>
-                     <QuoteEyecatch Text={article.content} />
-                     <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna. unc viverra imperdiet enim. Fusce est. Vivamus a tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci. Aenean nec lorem. In porttitor. Donec laoreet nonummy augue. Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.</p>
-                     <div className='tags'>
-                        {['Utbildning', 'IT', 'Företag', 'Digitalization', 'Design', 'Tech'].map((tag, i) => {
-                           return <Link to={`/news/${tag}`}><span className='tag' key={i}>{tag}</span></Link>
-                        })}
-                     </div>
+                     {article &&
+                        <>
+                           <img src={`${article.imageUrl}`} />
+                           <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.</p>
+                           <p>Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci. Aenean nec lorem. In porttitor. Donec laoreet nonummy augue. uspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.</p>
+                           <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna. unc viverra imperdiet enim. Fusce est. Vivamus a tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.</p>
+                           <p>Aenean nec lorem. In porttitor. Donec laoreet nonummy augue. Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.</p>
+                           <QuoteEyecatch Text={article.content} />
+                           <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna. unc viverra imperdiet enim. Fusce est. Vivamus a tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci. Aenean nec lorem. In porttitor. Donec laoreet nonummy augue. Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.</p>
+                           <div className='tags'>
+                              {['Utbildning', 'IT', 'Företag', 'Digitalization', 'Design', 'Tech'].map((tag, i) => {
+                                 return <Link to={`/news/${tag}`} key={i}><span className='tag' key={i}>{tag}</span></Link>
+                              })}
+                           </div>
+                        </>
+                     }
                   </div>
 
                   <div className='article-navigation'>
@@ -69,7 +73,7 @@ const ArticleView = () => {
                         <input placeholder='Type to search..' name='SearchBox' />
                      </div>
 
-                     {/* Recent */}
+                     {/* Recent Posts */}
                      <div className='recent-posts border-box'>
                         <h5>Recent Posts</h5>
                         <div className='content'>
@@ -124,8 +128,9 @@ const ArticleView = () => {
 
                   </div>
                </div>
+
             </div>
-         </section>
+         </section >
          <NewsSection />
       </>
    )

@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route, useRoutes } from 'react-router-dom'
 
 import './styleShared.scss'
 
+import { ArticleProvider } from '@contexts/ArticleContext'
+
 // Views
 import Home from '@views/Home'
 import News from '@views/News'
@@ -18,32 +20,34 @@ function App() {
    return (
       <>
          <BrowserRouter>
-            <Header />
-            <main>
-               <Routes>
-                  {/* Front page synonyms */}
-                  {['/', '/home', '/index'].map((pathName, index) => {
-                     return (<Route element={<Home />} path={pathName} key={index} />)
-                  })}
+            <ArticleProvider>
+               <Header />
+               <main>
+                  <Routes>
+                     {/* Front page synonyms */}
+                     {['/', '/home', '/index'].map((pathName, index) => {
+                        return (<Route element={<Home />} path={pathName} key={index} />)
+                     })}
 
-                  <Route path="/contact" element={<Contact />} />
+                     <Route path="/contact" element={<Contact />} />
 
-                  {/* Service synonyms */}
-                  {['/service', '/services'].map((pathName, index) => {
-                     return (<Route element={<Error404 />} path={pathName} key={index} />)
-                  })}
+                     {/* Service synonyms */}
+                     {['/service', '/services'].map((pathName, index) => {
+                        return (<Route element={<Error404 />} path={pathName} key={index} />)
+                     })}
 
-                  {/* News synonyms */}
-                  {['/news', '/news/:category', '/updates'].map((pathName, index) => {
-                     return (<Route element={<News />} path={pathName} key={index} />)
-                  })}
+                     {/* News synonyms */}
+                     {['/news', '/news/:category', '/updates'].map((pathName, index) => {
+                        return (<Route element={<News />} path={pathName} key={index} />)
+                     })}
 
-                  <Route path="/article/:id" element={<ArticleView />} />
+                     <Route path="/article/:id" element={<ArticleView />} />
 
-                  <Route path="*" element={<Error404 />} />
-               </Routes>
-            </main>
-            <Footer />
+                     <Route path="*" element={<Error404 />} />
+                  </Routes>
+               </main>
+               <Footer />
+            </ArticleProvider>
          </BrowserRouter>
 
          <ToTopButton />

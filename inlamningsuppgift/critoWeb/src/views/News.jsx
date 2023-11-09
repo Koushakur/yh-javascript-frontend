@@ -3,40 +3,22 @@ import React, { useEffect, useState } from 'react'
 import NewsletterSignup from '@components/NewsletterSignup'
 import NewsEntryPreview from '@components/News/NewsEntryPreview'
 import Subheader from '@components/Subheader'
-import { Link, useLocation, useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
+
+import { useArticles } from '@contexts/ArticleContext'
 
 const News = () => {
-   const [articles, setArticles] = useState([])
    const { category } = useParams()
-   const location = useLocation()
+
+   const { articles, setArticlesByCategory, setArticlesToAll } = useArticles()
 
    useEffect(() => {
-      fetchArticles(9, category)
-   }, [location])
+      if (category != null)
+         setArticlesByCategory(category)
+      else
+         setArticlesToAll()
 
-   async function fetchArticles(numArticles, category = null) {
-      const fetchData = await fetch(`https://win23-assignment.azurewebsites.net/api/articles?take=${numArticles}`)
-
-      if (fetchData.status === 200) {
-         let tArticles = await fetchData.json()
-
-         if (category == null) {
-            setArticles(tArticles)
-
-         } else {
-            let tArticlesByCategory = []
-            tArticles.forEach(article => {
-               // Case-insentitive category name comparison
-               if (category.localeCompare(article.category, 'en', { sensitivity: 'base' }) === 0)
-                  tArticlesByCategory.push(article)
-            })
-            setArticles(tArticlesByCategory)
-         }
-
-      } else {
-         alert(`Failed to fetch articles, status code ${fetchData.status}`)
-      }
-   }
+   }, [category])
 
    return (
       <>

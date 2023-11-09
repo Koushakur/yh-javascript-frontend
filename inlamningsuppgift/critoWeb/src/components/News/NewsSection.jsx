@@ -1,22 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 
 import NewsEntryPreview from './NewsEntryPreview'
 
 import { Link } from 'react-router-dom'
+import { useArticles } from '@contexts/ArticleContext'
 
 const NewsSection = () => {
-   const [articles, setArticles] = useState([])
+   const { articles, fetchArticles } = useArticles()
 
    useEffect(() => {
       fetchArticles(15)
    }, [])
-
-   async function fetchArticles(numArticles) {
-      const fetchData = await fetch(`https://win23-assignment.azurewebsites.net/api/articles?take=${numArticles}`)
-
-      if (fetchData.status === 200) { setArticles(await fetchData.json()) }
-      else { alert(`Failed to fetch articles, status code ${fetchData.status}`) }
-   }
 
    function createSlides() {
       let slides = [];
